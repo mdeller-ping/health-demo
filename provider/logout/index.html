@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+
+  <!-- page container -->
+  <div class="container-fluid">
+
+  </div>
+  <!-- /page container -->
+
+  <!-- jquery and bootstrap js libraries -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- JavaScript Cookie plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+  <!-- local javascript functions -->
+  <script src="../js/auth.js"></script>
+
+  <!-- let us log this individual out of here -->
+  <script>
+
+    // begin process
+
+    $(document).ready(function () {
+      console.log("Page ready function");
+
+      let idToken = Cookies.get('idToken');
+      let accessToken = Cookies.get('accessToken');
+
+      if (!idToken || !accessToken) {
+        console.log('Unable to find a session for this user');
+
+        window.location.replace(landingUrl);
+      } else {
+        console.log('idToken: ' + idToken);
+
+        Cookies.remove('idToken', { domain: cookieDomain });
+        Cookies.remove('accessToken', { domain: cookieDomain });
+        Cookies.remove('uuid', { domain: cookieDomain });
+        Cookies.remove('nonce', { domain: cookieDomain });
+
+        let logoffUrl = authUrl + (environmentId ? '/' + environmentId : '') + '/as/signoff?id_token_hint=' + idToken + '&post_logout_redirect_uri=' + logoutUrl;
+
+        window.location.replace(logoffUrl);
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
