@@ -67,7 +67,7 @@
   <div class="jumbotron jumbotron-fluid mb-n1">
     <div class="container">
       <h1 class="display-4">Individual Consent</h1>
-      <p class="lead">Here we show you an individual consent, that has been slimmed down for easie reading.  The Toggle Raw link below will show the full consent record.  The Actions menu above will allow you to Revoke or Enable this consent.</p>
+      <p class="lead">Here we show you an individual consent, that has been slimmed down for easier reading.  The Toggle Raw link below will show the full consent record.  The Actions menu above will allow you to Revoke or Enable this consent.</p>
     </div>
   </div>
   <!-- /hero banner -->
